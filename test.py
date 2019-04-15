@@ -2,7 +2,5 @@ import time
 from sys import argv 
 
 
-x = input()
-print(x)
-time.sleep(5)
+time.sleep(10)
 print('Hello world')

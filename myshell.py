@@ -36,7 +36,7 @@ class Shell(object):
         }
 
         self.commands = {
-            'exit': exit,
+            'quit': self.quit,
             'cd': self.cd,
             'pwd': self.pwd, 
             'clr': self.clr, 
@@ -86,10 +86,10 @@ class Shell(object):
                         task.run()
                 except (CommandNotFoundError, InvalidArgumentsError) as e:
                     print('myshell error: ' + e.message)
-                    exit(1)
+                    exit(0)
                 except:
-                    print('myshell error: `' + unparsed_input + '` is not a valid command or a unknown error occured.')
-                    exit(1)
+                    #print('myshell error: `' + unparsed_input + '` is not a valid command or a unknown error occured.')
+                    exit(0)
 
 
     def get_input(self):
@@ -99,7 +99,7 @@ class Shell(object):
         try:
             user_input = input('['+self.input_prefix() + '] $ ')
         except (KeyboardInterrupt, EOFError, SystemExit): # If user presses ctrl + d (EOF) or when running batch commands and reach EOF exit the shell.
-            exit(0)
+            exit(1)
         return user_input
     
     def input_prefix(self):
@@ -268,6 +268,12 @@ class Shell(object):
         Print's out the arguments after echo separated by spaces.
         '''
         print(" ".join(args), file=out)
+    
+    def quit(self, args, out):
+        '''
+        Exits the shell
+        '''
+        exit()
 
     def display_environ(self, args, out):
         '''
