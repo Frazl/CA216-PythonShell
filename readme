@@ -2,38 +2,22 @@
 
 MyShell Version CA2.16
 
----Overview---
+--- Author --- 
 
-MyShell is a python 3 based UNIX command interpreter usable as a script command processor. 
-
---Author-- 
 Sean Fradl
 Dublin City University
 Student No 17460674 
 As part of CA216
 
----Usage---
+--- Overview ---
 
+MyShell is a python 3 based UNIX command interpreter usable as a script command processor. 
 
--script files- 
-The shell supports scripts that can be passed when starting the shell,
-Example:./myshell.py script.mysh
-The above would run the script line by line as if it was manually inputed into the shell.
+--- Usage ---
 
--i/o redirection- 
-Before a command is executed, its input and output may be redirected and specified using a special notation interpreted by the shell.
-The shell supports standard shell i/o redirection as follows: 
+-- Commands -- 
 
-> - appends output to file.
->> - creates file/overwrites output to file.
-<< and < - bothread input from file to command. 
-
-Usage: command < input >> ouput.
-
-
--commands- 
-
-cd [directory]          - changes directory, if none supplied defaults to home directory marked as '~'. 
+cd [directory]          - changes directory, if none supplied then prints out the current working directory. 
 echo [options] strings  - simply prints the additional arguments passed. 
 clr                     - clears the screen. 
 dir [directory]         - displays the contents of the directory passed as an argument. If none are passed displays contents of current working directory.
@@ -41,10 +25,26 @@ environ                 - lists all the currently set evironment variables.
 pause                   - pauses the execution of the shell until the enter key has been pressed.
 quit                    - exits the shell.
 pwd                     - prints the current working directory to the terminal. 
-help                    - displays this readme within the terminal using more. 
+help                    - displays this readme within the terminal using more.
 
+-- Script Files -- 
 
----Environment Variables--- 
+The shell supports scripts that can be passed when starting the shell,
+Example:./myshell.py script.mysh
+The above would run the script line by line as if it was manually inputed into the shell.
+
+-- i/o redirection --
+
+Before a command is executed, its input and output may be redirected and specified using a special notation interpreted by the shell.
+The shell supports standard shell i/o redirection as follows: 
+
+> - appends output to file.
+>> - creates file/overwrites output to file.
+<< and < - both read input from file to command. 
+
+Usage: command < input >> ouput. 
+
+--- Environment Variables --- 
 
 The following variables are set within the shell to provide additional support for the inbuilt commands.
 
@@ -53,14 +53,14 @@ PWD - string containing the path of the current working directory the user is op
 SHELL - string containing the executable path to the shell. 
 
 
----Reserved Keywords---
+--- Reserved Keywords ---
 
 The shell reserves the following keywords for inbuilt commands:
 cd, echo, clr, dir, environ, pause, exit, environ, help, pwd.
 
 These commands have a higher priority and binaries attempted to run with the same name will be unable to do so.
 
----Running Binaries--- 
+--- Running Binaries --- 
 
 By default, the shell will take in the OS path environment variable if possible. This will allow the shell to run programs typically found in /usr/bin. 
 For example, instead of typing the full path to python3 '/usr/bin/python3 test.py', users can simply type 'python3 test.py' in the shell to run a python3 program.
